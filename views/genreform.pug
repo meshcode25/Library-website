@@ -1,0 +1,9 @@
+extends layout
+block content
+    h1 #{title}
+    br
+    form(method="POST", action="")
+        div.form-group 
+            label(for="genre") Genre Name:        
+            input#genrename.form-control(type="text" value=(genre===undefined? "": genre.name) required= true name="genre" )
+        button.btn.btn-primary(type="submit") Submit

@@ -1,0 +1,13 @@
+extends layout
+
+block content 
+    h1 #{title}
+    div(style="padding-left: 1rem; margin-left: 1rem")
+    -authors.sort(function(a,b){let A=a.first_name; let B=b.first_name; return (A<B)? -1: (A>B)? 1 :0})
+    ul
+        for author in authors
+            li
+                a(href=author.url) #{author.first_name} #{author.family_name} 
+                |  #{author.date_of_birth}- #{author.date_of_death}
+                
+    

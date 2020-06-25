@@ -1,0 +1,38 @@
+extends layout
+block content
+    h1 #{title} 
+
+    form#form(method="POST", action="")
+        div.form-group
+            label(for="title") Title:
+            input#title.form-control(type="text" name="title" required=true placeholder="Title of the Book" value=((book===undefined) ? " ": book.title) )
+        div.form-group    
+            lebel(for="summary") Summary:
+            input#summary.form-control(type="textarea" name="summary" required=true placeholder="Write a short summary of the Book" value=(book===undefined? " ": book.summary))
+        div.form-group
+            label(for="author") Author: 
+            select#author.form-control(type="select" name="author" placeholder="Select Book") 
+                -authors.sort(function(a,b){var A= a.first_name.toUpperCase(); var B= b.first_name.toUpperCase(); return (A<B)?-1: (A>B)? 1: 0 })
+                for author in authors
+                    if book
+                        option(value=author.id selected=(book.author.id===author.id? "selected": false)) #[ #{author.first_name}, #{author.family_name}]
+                    else
+                        option(value=author.id) #[ #{author.first_name }, #{author.family_name}]
+        div.form-group    
+            lebel(for="isbn") ISBN:
+            input#isbn.form-control(type="text" name="isbn" required=true placeholder="Enter ISBN number of the Book" value=(book===undefined? " ": book.isbn))
+        div.form-group
+            label Genre:
+            div(style="margin-left:1rem")
+                for genre in genres
+                    div(style="margin-left: 1rem; display:inline-block")
+                        lebel(for="genre") #{genre.name} 
+                        input#checkbox(type="checkbox" value=genre.id name="genre" checked=((book===undefined )? false: (book.genre[0].id.toString()===genre.id.toString())?  true:false ))
+
+        button.btn.btn-primary(type="submit") Submit
+
+
+    if errors
+        ul
+            for err in errors
+                li= err.msg

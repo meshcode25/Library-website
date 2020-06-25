@@ -1,0 +1,48 @@
+extends layout 
+block content
+    h1 #{title};
+
+    div
+        p #[strong Book:] #[a(href=book.url) #{book.title}]
+        p #[strong Author:] #[a(href=book.author.url) #{book.author.first_name}, #{book.author.family_name}]
+        p #[strong Summary:] #{book.summary}
+        p #[strong Genre:]
+            for genre in book.genre
+                a(href=genre.url) #{genre.name}
+        br
+        p Copies of:- #[a(href=book.url) #{book.title}] 
+            
+        br
+        div(style="margin-left: 1rem; margin-top:2rem")
+                each val in bookinstances
+                    p #[strong Book:] #{val.book}
+                    if val.status=="maintainance"
+                        p.text-danger #{val.status}
+                    else if val.status=="available"
+                        p.text-success #{val.status}
+                    else
+                        p.text-warning #{val.status}
+
+                    p #[strong Imprint:] #{val.imprint}
+                    if val.status != "available"
+                        p #[strong Due_Back:] #{val.due_back}
+                    p #[strong Id:] 
+                        a(href=val.url) #{val.id} 
+                    br
+                    br
+                else 
+                    p There are no copies available for this book
+        br
+        br
+
+        p 
+            a(href=book.url + "/delete") Delete Book
+        p    
+            a(href=book.url + "/update") Update Book
+
+
+
+        
+
+    
+    

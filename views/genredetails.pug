@@ -1,0 +1,26 @@
+extends layout
+block content
+    h1 #{title} 
+
+    p #[ Genre Name:] 
+        a(href=genre.url) #{ genre.name}
+    p #[ Genre Id:]  #[a(href=genre.url) #{ genre.id}]   
+
+    div(style="padding-left:2rem; margin-left:1rem")
+        p Books in this genre: 
+            if(genrebooks)
+                ul
+                    for book in genrebooks
+                        li #[a(href=book.url) #{book.title}] 
+            else
+                p This genre has no books available
+
+        br
+        br
+        p 
+            a(href=genre.url + "/delete") Delete Genre
+        p 
+            a(href=genre.url + "/update") Update Genre
+
+
+

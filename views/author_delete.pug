@@ -1,0 +1,25 @@
+extends layout
+block content
+    h1 #{title}
+    br 
+
+    p #[Strong Author Name: ] 
+        a(href=author.url) #{author.first_name}, #{author.family_name}
+    p #[Strong Date_of_Birth: ] #{author.date_of_birth}
+    p #[Strong Author Life-Span: ] #{author.date_of_birth} - #{author.date_of_death} 
+
+    br
+    if books.length>0 
+        p first delete the following books before deleting this Author    
+            ul
+                for book in books
+                    li #[a(href=book.url) #{book.title}]
+
+    else
+        p Do you really want to delete this Author?
+
+        form(method="POST",action="")
+            div.form-group
+                input#delete.form-control(type="hidden" value=author.id name="id")
+            br
+            button.btn.btn-primary(type="submit") Delete Author

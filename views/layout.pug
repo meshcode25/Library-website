@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        title library
+        link(rel="stylesheet" href="/public/stylesheets/style.css")
+    body
+        div(class="container-fluid")
+         div(class="row")
+           div(class="col-sm-2")
+                block sidebar
+                    ul(class="sidebar-nav")
+                        br
+                        li
+                            a(href="/catalog") Home
+                        li
+                            a(href="/catalog/books") All Books    
+                        li
+                            a(href="/catalog/authors") All Authors
+                        li
+                            a(href="/catalog/genres") All Genres
+                        li
+                            a(href="/catalog/bookinstances") All Bookinstances
+                        hr
+                        li
+                            a(href="/catalog/book/create") Create new Book
+                        li
+                            a(href="/catalog/genre/create") Create new Genre
+                        li
+                            a(href="/catalog/bookinstance/create") Create new Bookinstance
+                        li
+                            a(href="/catalog/author/create") Create new Author
+
+           div(class="col-sm-10") 
+                block content

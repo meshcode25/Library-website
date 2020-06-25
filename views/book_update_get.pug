@@ -1,0 +1,26 @@
+extends layout
+block content
+    h1  #{title}: 
+        a(href=book.url) #{book.title}
+    br 
+    
+    form(method="POST", action="")
+        div.form-group
+            label(for="title") Title:
+            input#title.form-control(type="text" name="title" value=book.title required=true)
+        div.form-group
+            label(for="author") Author:
+            input#author.form-control(type="text" name="author" value=book.author.first_name, book.author.family_name required=true)
+        div.form-group
+            label(for="ISBN") ISBN:
+            input#isbn.form-control(type="text" name= "isbn" value=book.isbn required=true)
+        div.form-group
+            label(for="genre") Genre: 
+            div
+                each genre in genres
+                     div(style="display:inline-block; margin-left:1rem;")
+                            input#genre.form-control(style="font-size:5px;input:hover:outline:none;" type="checkbox" name="genre" value=genre.id checked=genre.checked )
+                            label(for="genre") #{genre.name}
+        br
+        br      
+        button.btn.btn-primary Update  

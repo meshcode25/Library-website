@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+    h1=title
+    -books.sort(function(a,b){ textA=a.title.toUpperCase(); textB=b.title.toUpperCase(); return (textA<textB) ? -1: (textA>textB)? 1:0})
+    ul
+        for book in books
+                li 
+                    a(href=book.url) #{book.title} 
+                    
+                    | #{book.author.first_name}, #{book.author.family_name}

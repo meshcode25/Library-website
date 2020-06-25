@@ -1,0 +1,15 @@
+extends layout
+block content
+  h1= title
+  p Welcome to #[em LocalLibrary], a very basic Express website developed as a tutorial example on the Mozilla Developer Network
+  h1 Dynamic content
+  if error
+    p Error getting dynamic content.
+  else
+    p The library has the following record counts:
+    ul
+      li #[strong Books:] #{database_data.book_count}
+      li #[strong Copies:] #{database_data.bookinstance_count}
+      li #[strong Authors:] !{database_data.author_count}
+      li #[strong Copies available:] #{database_data.available_book_count}
+      li #[strong Genres:] #{database_data.genre_count}

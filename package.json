@@ -1,0 +1,31 @@
+{
+  "name": "library-website",
+  "version": "1.0.0",
+  "description": "library website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "helmet": "^3.22.0",
+    "http-errors": "^1.7.3",
+    "moment": "^2.26.0",
+    "mongoose": "^5.9.16",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.0"
+  }
+}

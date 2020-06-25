@@ -1,0 +1,26 @@
+extends layout
+block content
+    h1 #{title}
+    div(style="margin-left: 3rem")
+        p #[Strong Book:] #[a(href=bookinstance.book.url) #{bookinstance.book.title}]
+ 
+            if bookinstance.status==="available"
+                .text-success #{bookinstance.status}
+            else if bookinstance.status==="maintainance"
+                .text-warning #{bookinstance.status}
+            else 
+                .text-danger #{bookinstance.status}
+        p #[Strong Due_back:]
+            if bookinstance.status !="available"
+            |     #{bookinstance.due_back}
+        p #[Strong Id:]
+             
+                a(href=bookinstance.url) #{bookinstance.id}   
+        br
+        br
+        br
+
+        p
+            a(href=bookinstance.url + "/update") Update Bookintance
+        p
+            a(href=bookinstance.url + "/delete") Delete Bookinstance

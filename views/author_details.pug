@@ -1,0 +1,18 @@
+extends layout
+block content
+    h1 #{title} #{author.first_name}, #{author.family_name} 
+    br
+    
+    p #[Strong Author Name: ] 
+        a(href=author.url) #{author.first_name}, #{author.family_name}
+    p #[Strong Date_of_Birth: ] #{author.date_of_birth}
+    p #[Strong Author Life-Span: ] #{author.date_of_birth} - #{author.date_of_death} 
+
+    br
+    
+    br
+    p #[a(href=author.url + "/delete") Delete Author]
+        
+    
+    p #[a(href=author.url + "/update") Update Author]
+        

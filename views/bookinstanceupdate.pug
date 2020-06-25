@@ -1,0 +1,27 @@
+extends layout
+block content
+    h1 #{title}
+    br
+    br
+    form(method="POST" action="")
+        div.form-group 
+            label(for="book") Book:
+            select#booktitle.form-control(type="select" name="book" placeholder="select Book" value=(bookinstance===undefined? "": bookinstance.book.title) required=true )
+                for book in books
+                    option(value=book.id selected=(selected===book.id) ) #{book.title}
+        div.form-group 
+            label(for="imprint") Imprint:
+            input#imprint.form-control(type="text" name="imprint" placeholder="Enter the Book's publisher and Date infomation " value=(bookinstance===undefined? "": bookinstance.imprint) required=true)
+        div.form-group 
+            label(for="Due Back") Book Available from:
+            input#dueback.form-control(type="date" name="due_back" value=(bookinstance===undefined? "": bookinstance.due_back))
+            
+        div.form-group 
+            label(for="Status") Status:
+            select#dueback.form-control(type="select" name="status" value=(bookinstance===undefined? "": bookinstance.status))
+                option(value="loaned" selected=(undefined===bookinstance || bookinstance.status != "loaned" ? false :true)) Loaned
+                option(value="available" selected=(undefined===bookinstance || bookinstance.status != "available" ? false :true)) Available
+                option(value="maintaninance" selected=(undefined===bookinstance || bookinstance.status != "maintainance" ? false :true)) Maintainance
+                option(value="reserved" selected=(undefined===bookinstance || bookinstance.status != "reserved" ? false :true)) Reserved
+        br
+        Button.btn.btn-primary(type="submit") Submit
